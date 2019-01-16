@@ -72,12 +72,19 @@ public abstract class RessourceFinanciere {
 			return description;
 		}
 		
-		
+		/**
+		 * Affiche les Data Ressources
+		 */
+		@Override
+		public String toString() {
+			return "["+ annee + ", " + mois + ", " + intitule + ", " + type + ", " + montant
+					+ ", " + description + "]";
+		}
 
 		//Methods
 		public void modifierRessource(RessourceFinanciere nouvelleRessource) {
 			this.intitule = nouvelleRessource.getIntitule();
-			this.type = nouvelleRessource.gettype;
+			this.type = nouvelleRessource.getType();
 			this.montant = nouvelleRessource.getMontant();
 			this.annee = nouvelleRessource.getAnnee();
 			this.mois = nouvelleRessource.getMois();
