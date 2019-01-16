@@ -2,26 +2,27 @@ package dal;
 
 public abstract class RessourceFinanciere {
 
-		private String intitule;
-		private String type;
-		private double montant;
-		private int annee;
-		private int mois;
-		private String description;
+		String intitule;
+		String type;
+		double montant;
+		int annee;
+		int mois;
+		String description;
 
 		public RessourceFinanciere(String intitule, String type, double montant, int annee, int mois) {
 			this.intitule = intitule;
-			this.type = type;
+			this.type = BDD.listType.get(TypeRessourceUtil.getKey(type));
 			this.montant = montant;
 			this.annee = annee;
 			this.mois = mois;
 			this.description = "";
+			
 		}
 
 		public RessourceFinanciere(String intitule, String type, double montant, int annee, int mois,
 			String description) {
 			this.intitule = intitule;
-			this.type = type;
+			this.type = BDD.listType.get(TypeRessourceUtil.getKey(type));
 			this.montant = montant;
 			this.annee = annee;
 			this.mois = mois;
@@ -70,15 +71,6 @@ public abstract class RessourceFinanciere {
 		 */
 		public String getDescription() {
 			return description;
-		}
-		
-		/**
-		 * Affiche les Data Ressources
-		 */
-		@Override
-		public String toString() {
-			return "["+ annee + ", " + mois + ", " + intitule + ", " + type + ", " + montant
-					+ ", " + description + "]";
 		}
 
 		//Methods
