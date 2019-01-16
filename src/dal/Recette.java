@@ -11,4 +11,13 @@ public class Recette extends RessourceFinanciere {
 		super(intitule, type, montant, annee, mois, description);
 		// TODO Auto-generated constructor stub
 	}
+	
+	/**
+	 * Affiche une recette
+	 */
+	@Override
+	public String toString() {
+		return "RECETTE : ["+ annee + ", " + mois + ", " + intitule + ", " + type + ", " + montant
+				+ ", " + description + "]";
+	}
 }

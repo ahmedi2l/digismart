@@ -12,4 +12,13 @@ public class Depense extends RessourceFinanciere {
 		super(intitule, type, montant, annee, mois, description);
 		// TODO Auto-generated constructor stub
 	}
+	
+	/**
+	 * Affiche une depense
+	 */
+	@Override
+	public String toString() {
+		return "DEPENSE : ["+ annee + ", " + mois + ", " + intitule + ", " + type + ", " + montant
+				+ ", " + description + "]";
+	}
 }
