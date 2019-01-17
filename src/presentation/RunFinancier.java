@@ -43,7 +43,7 @@ public class RunFinancier {
 				afficherMenuDepense();
 				break;
 			case 3:
-				afficherMenuRecette();
+//				afficherMenuRecette();
 				break;
 			case 4:
 				
@@ -52,17 +52,22 @@ public class RunFinancier {
 			case 0:
 				break;
 			default:
-				System.out.println("Veuillez indiquer votre choix : 1 2 3 ou 4");
+				isRunning = false;
 				break;
 			}
 		}
 	}
 
+	
+	/**
+	 *  Affiche le sous-Menu Gestion des depenses
+	 *  si quitte : retourne au menu principal de Gestion financiere
+	 */
 	public static void afficherMenuDepense() {
 		boolean isRunning = true;
 		
 		while (isRunning) {
-			ArrayList args;
+			ArrayList<Object> args;
 			
 			System.out.println(menuDepense);
 			Scanner sc = new Scanner(System.in);
@@ -85,25 +90,29 @@ public class RunFinancier {
 			case 3:
 				System.out.println("**** Supprimer une dépense ****\n");
 				args = findRessourceArgs("depense");
-				// TODO add method to find ressource depenseToDelete
-				Financier.deleteDepense(depensetoDelete);
+				Depense depenseToDelete = Financier.getDepenseFromDB(args);
+				Financier.deleteDepense(depenseToDelete);
 				args = null;
 				break;
 			case 4:
 				System.out.println("**** Modifier une dépense ****\n");
 				args = findRessourceArgs("depense");
-				// TODO add method to find ressource depenseTochange
-				
-				break;
+				Depense depenseToChange = Financier.getDepenseFromDB(args);
+				Financier.modifierDepense(depenseToChange);
 			case 0:
-				System.out.println("Vous avez quitté l'application");
+				isRunning = false;
 				break;
 			default:
 				break;
 			}
 		}
 	}
-	
+		
+	/**
+	 * Récupère les données nécessaires à la création/modification d'une ressource
+	 * @param depenseORrecette choisir "depense" ou "recette
+	 * @return ArrayList<Object> args = {String, String, double, int, int, String}
+	 */
 	public static ArrayList<Object> askRessourceArgs(String depenseORrecette){
 		Scanner sc = new Scanner(System.in);
 		
@@ -135,7 +144,11 @@ public class RunFinancier {
 		
 		return args;
 	}
-	
+	/**
+	 * Récupère les attributs nécessaires à la recherche d'une ressource
+	 * @param depenseOrRecette choisir le type de ressources "depense" ou "recette"
+	 * @return ArrayList<Object> args = {String, int, int}
+	 */
 	public static ArrayList<Object> findRessourceArgs(String depenseOrRecette){
 	Scanner sc = new Scanner(System.in);
 		
