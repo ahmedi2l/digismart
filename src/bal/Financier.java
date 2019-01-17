@@ -62,7 +62,7 @@ public class Financier {
 		}
 	}
 	
-	public void deleteDepense(Depense depense) {
+	public static void deleteDepense(Depense depense) {
 		
 	}
 	

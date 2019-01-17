@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 import bal.Financier;
 import dal.BDD;
-import dal.Depense;
-import dal.Recette;
-import dal.RessourceFinanciere;
+import bal.Depense;
+import bal.Recette;
+import bal.RessourceFinanciere;
 
 public class RunFinancier {
 
@@ -75,7 +75,6 @@ public class RunFinancier {
 			sc.close();
 
 			
-			
 			switch (choice) {
 			case 1:
 				// TODO add method
@@ -90,15 +89,20 @@ public class RunFinancier {
 			case 3:
 				System.out.println("**** Supprimer une dépense ****\n");
 				args = findRessourceArgs("depense");
-				Depense depenseToDelete = Financier.getDepenseFromDB(args);
+				Depense depenseToFind = new Depense((String)args.get(0),"",0, (int)args.get(1), (int)args.get(2));
+				Depense depenseToDelete = Financier.getDepenseFromDB(depenseToFind);
 				Financier.deleteDepense(depenseToDelete);
 				args = null;
 				break;
 			case 4:
 				System.out.println("**** Modifier une dépense ****\n");
 				args = findRessourceArgs("depense");
-				Depense depenseToChange = Financier.getDepenseFromDB(args);
-				Financier.modifierDepense(depenseToChange);
+				Depense depenseToModify = new Depense((String)args.get(0),"",0, (int)args.get(1), (int)args.get(2));
+				System.out.println("Entrer la nouvelle depense : \n");
+				args = askRessourceArgs("depense");
+				Depense depenseModified = new Depense((String)args.get(0), (String)args.get(1), (double)args.get(2), (int)args.get(3), (int)args.get(4), (String)args.get(5));
+				Depense depenseToChange = Financier.getDepenseFromDB(depenseToModify);
+				Financier.modifierDepense(depenseToChange, depenseModified);
 			case 0:
 				isRunning = false;
 				break;
