@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import bal.Depense;
+import bal.Recette;
 import dal.ListeDepenseGenerator;
 
 public class BDD {

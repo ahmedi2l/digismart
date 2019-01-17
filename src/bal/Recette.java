@@ -1,4 +1,4 @@
-package dal;
+package bal;
 
 public class Recette extends RessourceFinanciere {
 

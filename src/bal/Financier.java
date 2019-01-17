@@ -2,8 +2,6 @@ package bal;
 
 
 import dal.BDD;
-import dal.Depense;
-import dal.Recette;
 
 public class Financier {
 
@@ -17,7 +15,7 @@ public class Financier {
 		addRecette(recette);
 	}
 	
-	private static boolean containRecette(Recette recette) {
+	public static boolean containRecette(Recette recette) {
 		boolean res = false;
 		for (Recette recetteFromList : BDD.listRecette) {
 			if (recette.getIntitule().equals(recetteFromList.getIntitule()) && 
@@ -29,7 +27,7 @@ public class Financier {
 		return res;
 	}
 	
-	private static boolean containDepense(Depense depense) {
+	public static boolean containDepense(Depense depense) {
 		boolean res = false;
 		for (Depense depenseFromList : BDD.listDepense) {
 			if (depense.getIntitule().equals(depenseFromList.getIntitule()) && 
@@ -41,7 +39,7 @@ public class Financier {
 		return res;
 	}
 	
-	private static void addDepense(Depense depense) {
+	public static void addDepense(Depense depense) {
 		if (containDepense(depense)) {
 			Depense depenseInitial = getDepenseFromDB(depense);
 			Depense depenseModifier = new Depense(depense.getIntitule(), depense.getType(), depense.getMontant() + depenseInitial.getMontant(),
@@ -52,11 +50,11 @@ public class Financier {
 		}
 	}
 	
-	private static void modifierDepense(Depense depenseInitial, Depense depenseModifier) {
+	public static void modifierDepense(Depense depenseInitial, Depense depenseModifier) {
 		
 	}
 
-	private static void addRecette(Recette recette) {
+	public static void addRecette(Recette recette) {
 		if (containRecette(recette)) {
 			Recette recetteInitial = getRecetteFromDB(recette);
 			Recette recetteModifier = new Recette(recette.getIntitule(), recette.getType(), recette.getMontant() + recetteInitial.getMontant(),
@@ -64,11 +62,11 @@ public class Financier {
 		}
 	}
 	
-	private void deleteDepense(Depense depense) {
+	public void deleteDepense(Depense depense) {
 		
 	}
 	
-	private static Depense getDepenseFromDB(Depense depense) {
+	public static Depense getDepenseFromDB(Depense depense) {
 		Depense res = null;
 		for (Depense depenseFromList : BDD.listDepense) {
 			if (depense.getIntitule().equals(depenseFromList.getIntitule()) && 
@@ -80,7 +78,7 @@ public class Financier {
 		return res;
 	}
 	
-	private static Recette getRecetteFromDB(Recette recette) {
+	public static Recette getRecetteFromDB(Recette recette) {
 		Recette res = null;
 		for (Recette recetteFromList : BDD.listRecette) {
 			if (recette.getIntitule().equals(recetteFromList.getIntitule()) && 
@@ -90,5 +88,9 @@ public class Financier {
 			}
 		}
 		return res;
+	}
+	
+	public static void run() {
+		
 	}
 }

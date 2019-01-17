@@ -2,6 +2,8 @@ package dal;
 
 import java.util.ArrayList;
 
+import bal.Depense;
+
 public class ListeDepenseGenerator {
 
 	private double montant;

@@ -1,4 +1,7 @@
-package dal;
+package bal;
+
+import dal.BDD;
+import dal.TypeRessourceUtil;
 
 public abstract class RessourceFinanciere {
 
@@ -16,7 +19,6 @@ public abstract class RessourceFinanciere {
 			this.annee = annee;
 			this.mois = mois;
 			this.description = "";
-			
 		}
 
 		public RessourceFinanciere(String intitule, String type, double montant, int annee, int mois,
