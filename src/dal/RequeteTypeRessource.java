@@ -1,12 +1,12 @@
 package dal;
 
-public class TypeRessourceUtil {
+public class RequeteTypeRessource {
 
 	// Attributs
 	private static int typeNextKey = 0;
 
 	// Constructeur
-	public TypeRessourceUtil() {
+	public RequeteTypeRessource() {
 		super();
 	}
 
